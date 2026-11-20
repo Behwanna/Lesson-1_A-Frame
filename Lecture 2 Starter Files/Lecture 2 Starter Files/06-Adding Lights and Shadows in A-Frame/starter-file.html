@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <title>Adding Lights and Shadows in A-Frame</title>
+</head>
+
+<body>
+    <!-- This enables shadows in the scene and adds soft shadows -->
+    <a-scene shadow="type: pcfsoft">
+        <!-- Assets used in the scene -->
+        <a-assets>
+            <img id="floor" src="assets/floor-1024.jpg">
+            <img id="firefox" src="assets/firefox-quantum-1024.png">
+            <a-asset-item id="room" src="assets/room.gltf"></a-asset-item>
+        </a-assets>
+
+        <!-- Sky -->
+        <a-sky color="#FFFFFF"></a-sky>
+
+        <!-- Floor that receives shadows -->
+        <a-plane src="#floor"
+                 rotation="-90 0 0" 
+                 scale="10000 10000 1" 
+                 repeat="1000 1000"
+                 shadow="receive: true">
+        </a-plane>
+
+        <!-- Camera -->
+        <a-entity position="0 0 5">
+            <a-camera></a-camera>
+        </a-entity>
+
+        <!-- Blue Room that casts and receives shadows -->
+        <a-entity gltf-model="#room" shadow="cast: true; receive: true">
+        </a-entity>
+
+        <!-- Firefox logo -->
+        <a-image src="#firefox" scale="2 2 1" position="-2 3 -2.49">
+        </a-image>
+
+        <!-- Light Grey Panel that casts shadows -->
+        <a-box color="#E0E0E0" scale="5 0.1 1" position="0 4 0" shadow="cast: true; receive: true">
+        </a-box>
+
+        <!-- Yellow Box that rotates and casts shadows -->
+        <a-box color="#FFEB3B" scale="0.5 0.5 0.5" position="-1 1 0" shadow="cast: true">
+            <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear"></a-entity>
+        </a-box>
+
+        <!-- Orange Box that rotates and casts shadows -->
+        <a-box id="orange-box"
+               color="#FF5722" scale="0.5 0.5 0.5" position="1 1 0" shadow="cast: true">
+            <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear"></a-entity>
+        </a-box>
+
+        <!-- Lights -->
+        <!-- Ambient light to brighten the scene -->
+        <a-entity light="type: ambient; intensity: 0.2"></a-entity>
+
+        <!-- Spotlight that focuses on the orange box -->
+        <!-- The light is pink and creates shadows -->
+        <a-entity light="type: spot; 
+                         target: #orange-box; 
+                         color: #C40070; 
+                         angle: 30; 
+                         penumbra: 0.1; 
+                         castShadow: true"
+                  position="0 3 1">
+        </a-entity>
+
+    </a-scene>
+</body>
+</html>

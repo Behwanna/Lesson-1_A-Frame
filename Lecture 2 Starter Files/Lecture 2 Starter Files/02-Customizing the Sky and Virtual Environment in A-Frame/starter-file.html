@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <title>Customizing the Sky and Virtual Environment in A-Frame</title>
+</head>
+<body>
+    <a-scene>
+        <!-- Asset Management System -->
+        <a-assets>
+            <!-- Ground textures -->
+            <img id="floor" src="assets/concrete_floor_damaged_01_4k.blend/textures/concrete_floor_damaged_01_diff_4k.jpg">
+            <img id="floor-NRM" src="assets/concrete_floor_damaged_01_4k.blend/textures/concrete_floor_damaged_01_nor_gl_4k.jpg" alt="">
+            <img id="floor-roughness" src="assets/concrete_floor_damaged_01_4k.blend/textures/concrete_floor_damaged_01_rough_4k.jpg" alt="">
+            <img id="floor-ao" src="assets/concrete_floor_damaged_01_4k.blend/textures/concrete_floor_damaged_01_ao_4k.jpg"></img>
+
+            <!-- Sky textures -->
+            <img id="clear-sunny-sky" src="assets/clear-sunny-sky.jpg">
+            <img id="360-panorama" src="assets/360-image.jpg">
+        </a-assets>
+
+        <!-- Sky -->
+        <!-- Rotated the sky to match the scene -->
+        <!-- <a-sky src="#clear-sunny-sky" rotation="0 64 0"></a-sky>
+        -->
+
+        <!-- Ground -->
+        <!-- Made the ground bigger to cover a wide area -->
+        <!-- Fixed the spelling of normal-texture-repeat -->
+        <!--
+        <a-plane material="color: #FFFFFF; 
+                          src: #floor; 
+                          repeat: 5 5; 
+                          normal-map: #floor-NRM; 
+                          normal-texture-repeat: 5 5; 
+                          roughness-map: #floor-roughness; 
+                          roughness: 0.9; 
+                          ao-map: #floor-ao; 
+                          ao: 0.5;"
+                 position="0 0 0"
+                 rotation="-90 0 0"
+                 scale="10000 10000 1">
+        </a-plane>
+    -->
+
+        <!-- The cartoon ground and 360 panorama are other options -->
+        <!-- You can use them instead of the sky and ground above -->
+
+        <!-- Cartoon ground -->
+        <!-- A green flat ground without textures -->
+        <!--
+        <a-plane material="color: #00AA00; shader: flat"
+                 rotation="-90 0 0"
+                 scale="10000 10000 1">
+        </a-plane>
+        -->
+
+        <!-- 360 panorama -->
+        <!-- Used a panorama image as the sky -->
+      
+        <a-sky src="#360-panorama"></a-sky>
+      
+
+    </a-scene>
+</body>
+</html>
